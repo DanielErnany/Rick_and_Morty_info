@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_info/models/caracter.dart';
 import 'package:rick_and_morty_info/providers/caracters_provider.dart';
+import 'package:rick_and_morty_info/widgets/caracters_gridview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,47 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final caractersProvider =
-        Provider.of<CaractersProvider>(context, listen: true);
-    final caracters = caractersProvider.caracters;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rick and Morty info'),
       ),
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.builder(
-              itemCount: caracters.length,
-              padding: EdgeInsets.all(10),
-
-              itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-                value: caracters[i],
-                child: Column(
-                  children: [
-                    Container(
-                      height: 150,
-                      child: Image.network(caracters[i].image),
-                    ),
-                    Text(caracters[i].name),
-                  ],
-                ),
-              ),
-              // Delega a forma de renderizar a grid de uma forma que ela tenha um tamnho fixo nas linhas
-              // e mostre somente 2 widgets(Produtos)
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                // Indica a quantidade de widgets que vai ter na linha
-                crossAxisCount: 2,
-                // como as dimensoes dos produtos vao ser mostrados dependendo da resolução da tela
-                childAspectRatio: 1,
-                // define o espaçamento no eixo das linhas
-                crossAxisSpacing: 10,
-                // define o espaçamento no eixo das colunas
-                mainAxisSpacing: 10,
-              ),
-            ),
+          :const CaractersGridview(),
     );
   }
 }

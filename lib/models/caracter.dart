@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class Caracter with ChangeNotifier {
   final int id;
@@ -18,6 +18,25 @@ class Caracter with ChangeNotifier {
     required this.gender,
     required this.image,
   });
+
+  Color get statusColor {
+    Color color;
+
+    switch (status) {
+      case "Alive":
+        color = Colors.green;
+
+        break;
+      case "Dead":
+        color = Colors.red;
+        break;
+      default:
+        color = Colors.grey;
+        break;
+    }
+
+    return color;
+  }
 
   Caracter copyWith({
     int? id,
