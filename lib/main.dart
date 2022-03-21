@@ -4,6 +4,8 @@ import 'package:rick_and_morty_info/providers/caracters_provider.dart';
 import 'package:rick_and_morty_info/theme/app_theme.dart';
 import 'package:rick_and_morty_info/widgets/caracters_gridview.dart';
 
+import 'widgets/app_bar_widget.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -50,9 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rick and Morty info'),
-      ),
+      appBar: AppBarWidget(),
+      // AppBarWidget(),
       body: _isLoading
           ? const Center(
               child: CircularProgressIndicator(),
@@ -61,3 +62,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
