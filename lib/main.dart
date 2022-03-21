@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty_info/providers/caracters_provider.dart';
 import 'package:rick_and_morty_info/theme/app_theme.dart';
-import 'package:rick_and_morty_info/widgets/caracters_gridview.dart';
+import 'package:rick_and_morty_info/widgets/caracters_gridview_widget.dart';
 
 import 'widgets/app_bar_widget.dart';
 
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : const CaractersGridview(),
+          : const CaractersGridviewWidget(),
     );
   }
 }

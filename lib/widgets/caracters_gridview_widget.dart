@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/caracters_provider.dart';
-import 'caracter_item_gridview.dart';
+import 'caracter_item_gridview_widget.dart';
 
-class CaractersGridview extends StatelessWidget {
-  const CaractersGridview({Key? key}) : super(key: key);
+class CaractersGridviewWidget extends StatelessWidget {
+  const CaractersGridviewWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class CaractersGridview extends StatelessWidget {
 
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
         value: caracters[i],
-        child: CaracterItemGridView(
+        child: CaracterItemGridViewWidget(
           key: ValueKey(caracters[i].id),
           caracter: caracters[i],
         ),

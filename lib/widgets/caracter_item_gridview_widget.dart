@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_info/models/caracter.dart';
 
-class CaracterItemGridView extends StatelessWidget {
+class CaracterItemGridViewWidget extends StatelessWidget {
   final Caracter caracter;
-  const CaracterItemGridView({
+  const CaracterItemGridViewWidget({
     Key? key,
     required this.caracter,
   }) : super(key: key);
