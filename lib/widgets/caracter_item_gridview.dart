@@ -66,10 +66,7 @@ class CaracterItemGridView extends StatelessWidget {
               fit: BoxFit.fill,
               child: Text(
                 caracter.name,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ),

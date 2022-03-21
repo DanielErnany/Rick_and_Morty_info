@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty_info/providers/caracters_provider.dart';
+import 'package:rick_and_morty_info/theme/app_theme.dart';
 import 'package:rick_and_morty_info/widgets/caracters_gridview.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -18,9 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Rick and Morty info',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.lightTheme,
         home: const MyHomePage(),
       ),
     );
@@ -58,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          :const CaractersGridview(),
+          : const CaractersGridview(),
     );
   }
 }
