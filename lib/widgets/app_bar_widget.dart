@@ -63,8 +63,21 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(
-        'Rick and Morty info',
+      title: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.4),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.all(5),
+        child: const Text(
+          'Rick and Morty info',
+          style: TextStyle(
+            fontFamily: 'Quanco',
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       flexibleSpace: appBarGradient,
     );
