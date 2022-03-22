@@ -102,7 +102,10 @@ class CaracterItemGridViewWidget extends StatelessWidget {
               ),
             ],
           ),
-          Text("Species: ${caracter.species}"),
+          FittedBox(
+            fit: BoxFit.fill,
+            child: Text("Species: ${caracter.species}"),
+          ),
           Text("Gender: ${caracter.gender}"),
         ],
       ),
