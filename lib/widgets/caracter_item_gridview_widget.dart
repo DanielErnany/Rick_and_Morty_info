@@ -60,6 +60,18 @@ class CaracterItemGridViewWidget extends StatelessWidget {
             child: Image.network(
               caracter.image,
               fit: BoxFit.fill,
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                return child;
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
           Center(
