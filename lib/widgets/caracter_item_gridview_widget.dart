@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_info/models/caracter.dart';
+import 'package:rick_and_morty_info/widgets/acid_drop_widget.dart';
 
 class CaracterItemGridViewWidget extends StatelessWidget {
   final Caracter caracter;
@@ -81,9 +82,11 @@ class CaracterItemGridViewWidget extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              CircleAvatar(
-                backgroundColor: caracter.statusColor,
-                radius: 5,
+
+              AcidDropWidget(
+                height: 12,
+                width: 12,
+                radialGradient: caracter.statusColorRadialGradient,
               ),
             ],
           ),

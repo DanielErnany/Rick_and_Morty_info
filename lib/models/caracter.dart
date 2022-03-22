@@ -19,19 +19,37 @@ class Caracter with ChangeNotifier {
     required this.image,
   });
 
-  Color get statusColor {
-    Color color;
+  RadialGradient get statusColorRadialGradient {
+    RadialGradient color;
 
     switch (status) {
       case "Alive":
-        color = Colors.green;
+        color = const RadialGradient(
+          colors: [
+            Color.fromRGBO(1, 138, 58, 1),
+            Color.fromRGBO(116, 212, 43, 1),
+            Color.fromRGBO(204, 255, 0, 1),
+          ],
+        );
 
         break;
       case "Dead":
-        color = Colors.red;
+        color = const RadialGradient(
+          colors: [
+            Colors.redAccent,
+            Colors.orange,
+            Color.fromRGBO(204, 255, 0, 1),
+          ],
+        );
         break;
       default:
-        color = Colors.grey;
+        color = const RadialGradient(
+          colors: [
+            Colors.blueGrey,
+            Colors.grey,
+            Colors.white,
+          ],
+        );
         break;
     }
 
