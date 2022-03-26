@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_info/models/caracter.dart';
 import 'package:rick_and_morty_info/widgets/acid_drop_widget.dart';
@@ -57,21 +58,12 @@ class CaracterItemGridViewWidget extends StatelessWidget {
             ),
             height: dimensionsDevice.height * 0.15,
             width: double.infinity,
-            child: Image.network(
-              caracter.image,
-              fit: BoxFit.fill,
-              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                return child;
-              },
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
+            child: CachedNetworkImage(
+              imageUrl: caracter.image,
+              fit: BoxFit.cover,
+              progressIndicatorBuilder: (_, url, download) => const Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
           ),
           Center(
