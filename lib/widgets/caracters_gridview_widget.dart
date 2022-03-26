@@ -48,32 +48,46 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
     final caracters =
         Provider.of<CaractersProvider>(context, listen: true).caracters;
 
-    return SmartRefresher(
-      controller: _refreshController,
-      onRefresh: _refreshData,
-      onLoading: _nextPageData,
-      enablePullUp: true,
-      child: _initialLoad
-          ?const Center(
-              child: CircularProgressIndicator(),
-            )
-          : GridView.builder(
-              itemCount: caracters.length,
-              padding: const EdgeInsets.all(10),
-              itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-                value: caracters[i],
-                child: CaracterItemGridViewWidget(
-                  key: ValueKey(caracters[i].id),
-                  caracter: caracters[i],
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color.fromRGBO(116, 212, 43, 1),
+            Colors.white70,
+            Colors.white60,
+            // Colors.grey,
+          ],
+        ),
+      ),
+      child: SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _refreshData,
+        onLoading: _nextPageData,
+        enablePullUp: true,
+        child: _initialLoad
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : GridView.builder(
+                itemCount: caracters.length,
+                padding: const EdgeInsets.all(10),
+                itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+                  value: caracters[i],
+                  child: CaracterItemGridViewWidget(
+                    key: ValueKey(caracters[i].id),
+                    caracter: caracters[i],
+                  ),
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1 / 1.35,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                 ),
               ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1 / 1.35,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-            ),
+      ),
     );
   }
 }
