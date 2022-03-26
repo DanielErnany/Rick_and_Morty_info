@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../providers/caracters_provider.dart';
+import 'acid_circular_progress_indicator_widget.dart';
 import 'caracter_item_gridview_widget.dart';
 
 class CaractersGridviewWidget extends StatefulWidget {
@@ -68,7 +69,7 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
         enablePullUp: true,
         child: _initialLoad
             ? const Center(
-                child: CircularProgressIndicator(),
+                child: AcidCircularProgressIndicatorWidget(),
               )
             : GridView.builder(
                 itemCount: caracters.length,
