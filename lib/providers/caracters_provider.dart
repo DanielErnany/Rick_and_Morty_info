@@ -40,14 +40,7 @@ class CaractersProvider with ChangeNotifier {
 
     listaDataCaracter.forEach((caracter) {
       _caracters.add(
-        Caracter(
-          id: caracter['id']!,
-          name: caracter['name'],
-          status: caracter['status'],
-          species: caracter['species'],
-          gender: caracter['gender'],
-          image: caracter['image'],
-        ),
+        Caracter.fromMap(caracter),
       );
     });
     notifyListeners();

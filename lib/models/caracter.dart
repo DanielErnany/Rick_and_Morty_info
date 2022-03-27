@@ -7,16 +7,22 @@ class Caracter with ChangeNotifier {
   final String name;
   final String status;
   final String species;
+  final String type;
   final String gender;
   final String image;
 
+  final String origin;
+  final String location;
   Caracter({
     required this.id,
     required this.name,
     required this.status,
     required this.species,
+    required this.type,
     required this.gender,
     required this.image,
+    required this.origin,
+    required this.location,
   });
 
   RadialGradient get statusColorRadialGradient {
@@ -61,16 +67,22 @@ class Caracter with ChangeNotifier {
     String? name,
     String? status,
     String? species,
+    String? type,
     String? gender,
     String? image,
+    String? origin,
+    String? location,
   }) {
     return Caracter(
       id: id ?? this.id,
       name: name ?? this.name,
       status: status ?? this.status,
       species: species ?? this.species,
+      type: type ?? this.type,
       gender: gender ?? this.gender,
       image: image ?? this.image,
+      origin: origin ?? this.origin,
+      location: location ?? this.location,
     );
   }
 
@@ -80,8 +92,11 @@ class Caracter with ChangeNotifier {
       'name': name,
       'status': status,
       'species': species,
+      'type': type,
       'gender': gender,
       'image': image,
+      'origin': origin,
+      'location': location,
     };
   }
 
@@ -91,8 +106,11 @@ class Caracter with ChangeNotifier {
       name: map['name'] ?? '',
       status: map['status'] ?? '',
       species: map['species'] ?? '',
+      type: map['type'] ?? '',
       gender: map['gender'] ?? '',
       image: map['image'] ?? '',
+      origin: map['origin']['name'],
+      location: map['location']['name'],
     );
   }
 
@@ -103,7 +121,7 @@ class Caracter with ChangeNotifier {
 
   @override
   String toString() {
-    return 'Caracter(id: $id, name: $name, status: $status, species: $species, gender: $gender, image: $image)';
+    return 'Caracter(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, origin: $origin, location: $location)';
   }
 
   @override
@@ -115,8 +133,11 @@ class Caracter with ChangeNotifier {
         other.name == name &&
         other.status == status &&
         other.species == species &&
+        other.type == type &&
         other.gender == gender &&
-        other.image == image;
+        other.image == image &&
+        other.origin == origin &&
+        other.location == location;
   }
 
   @override
@@ -125,7 +146,10 @@ class Caracter with ChangeNotifier {
         name.hashCode ^
         status.hashCode ^
         species.hashCode ^
+        type.hashCode ^
         gender.hashCode ^
-        image.hashCode;
+        image.hashCode ^
+        origin.hashCode ^
+        location.hashCode;
   }
 }

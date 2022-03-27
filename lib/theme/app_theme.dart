@@ -10,6 +10,10 @@ class AppTheme {
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
+        titleMedium: TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+        ),
       ),
     );
 
