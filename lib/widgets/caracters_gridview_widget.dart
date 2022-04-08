@@ -83,7 +83,7 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
                 ),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1 / 1.35,
+                  childAspectRatio: 1 / 1.42,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),

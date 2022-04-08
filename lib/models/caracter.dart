@@ -62,6 +62,47 @@ class Caracter with ChangeNotifier {
     return color;
   }
 
+  LinearGradient get statusColorLinearGradient {
+    LinearGradient color;
+
+    switch (status) {
+      case "Alive":
+        color = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromARGB(255, 1, 42, 18),
+            Color.fromRGBO(1, 138, 58, 1),
+          ],
+        );
+
+        break;
+      case "Dead":
+        color = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromARGB(255, 94, 1, 1),
+            Color.fromARGB(255, 196, 3, 3),
+            // Colors.redAccent,
+          ],
+        );
+        break;
+      default:
+        color = LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromARGB(255, 150, 150, 150),
+            Colors.grey.shade300,
+          ],
+        );
+        break;
+    }
+
+    return color;
+  }
+
   Caracter copyWith({
     int? id,
     String? name,
