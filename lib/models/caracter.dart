@@ -25,44 +25,7 @@ class Caracter with ChangeNotifier {
     required this.location,
   });
 
-  RadialGradient get statusColorRadialGradient {
-    RadialGradient color;
-
-    switch (status) {
-      case "Alive":
-        color = const RadialGradient(
-          colors: [
-            Color.fromRGBO(1, 138, 58, 1),
-            Color.fromRGBO(116, 212, 43, 1),
-            Color.fromRGBO(204, 255, 0, 1),
-          ],
-        );
-
-        break;
-      case "Dead":
-        color = const RadialGradient(
-          colors: [
-            Colors.redAccent,
-            Colors.orange,
-            Color.fromRGBO(204, 255, 0, 1),
-          ],
-        );
-        break;
-      default:
-        color = const RadialGradient(
-          colors: [
-            Colors.blueGrey,
-            Colors.grey,
-            Colors.white,
-          ],
-        );
-        break;
-    }
-
-    return color;
-  }
-
-  LinearGradient get statusColorLinearGradient {
+  LinearGradient get statusColorLowLinearGradient {
     LinearGradient color;
 
     switch (status) {
@@ -95,6 +58,49 @@ class Caracter with ChangeNotifier {
           colors: [
             Color.fromARGB(255, 150, 150, 150),
             Colors.grey.shade300,
+          ],
+        );
+        break;
+    }
+
+    return color;
+  }
+
+  LinearGradient get statusColorHighLinearGradient {
+    LinearGradient color;
+
+    switch (status) {
+      case "Alive":
+        color = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromRGBO(1, 138, 58, 1),
+            Color.fromRGBO(116, 212, 43, 1),
+            Color.fromARGB(255, 135, 245, 50),
+          ],
+        );
+
+        break;
+      case "Dead":
+        color = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromARGB(255, 136, 1, 1),
+            Color.fromARGB(255, 177, 5, 5),
+            Color.fromARGB(255, 202, 16, 16),
+          ],
+        );
+        break;
+      default:
+        color = const LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          colors: [
+            Color.fromARGB(255, 121, 120, 120),
+            Color.fromARGB(255, 221, 220, 220),
+            Colors.white,
           ],
         );
         break;

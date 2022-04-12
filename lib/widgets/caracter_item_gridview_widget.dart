@@ -35,7 +35,7 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                 height: 15,
                 width: 10,
                 decoration: BoxDecoration(
-                  gradient: caracter.statusColorLinearGradient,
+                  gradient: caracter.statusColorLowLinearGradient,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(10),
                     topRight: Radius.circular(10),

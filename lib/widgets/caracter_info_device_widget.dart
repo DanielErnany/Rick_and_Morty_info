@@ -29,10 +29,13 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
         height: dimensionsDevice.height * 0.55,
         child: Stack(
           children: [
-            const Positioned(
+            Positioned(
               top: 5,
               left: 10,
-              child: LedAnimatedWidget(),
+              child: LedAnimatedWidget(
+                highGradient: widget.caracter.statusColorHighLinearGradient,
+                lowGradient: widget.caracter.statusColorLowLinearGradient,
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -106,23 +109,9 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                       SizedBox(
                         height: dimensionsDevice.height * 0.005,
                       ),
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Status: ${widget.caracter.status}",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          AcidDropWidget(
-                            height: 12,
-                            width: 12,
-                            radialGradient:
-                                widget.caracter.statusColorRadialGradient,
-                          ),
-                        ],
+                      Text(
+                        "Status: ${widget.caracter.status}",
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(
                         "Species: ${widget.caracter.species}",

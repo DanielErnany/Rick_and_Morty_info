@@ -3,7 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class LedAnimatedWidget extends StatefulWidget {
-  const LedAnimatedWidget({Key? key}) : super(key: key);
+  final LinearGradient highGradient;
+  final LinearGradient lowGradient;
+
+  const LedAnimatedWidget({
+    Key? key,
+    required this.highGradient,
+    required this.lowGradient,
+  }) : super(key: key);
 
   @override
   State<LedAnimatedWidget> createState() => _LedAnimatedWidgetState();
@@ -11,32 +18,14 @@ class LedAnimatedWidget extends StatefulWidget {
 
 class _LedAnimatedWidgetState extends State<LedAnimatedWidget> {
   late bool _lightHigh;
-  late LinearGradient _gradientLight;
-
-  final LinearGradient _highGradient = const LinearGradient(
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-    colors: [
-      Color.fromRGBO(1, 138, 58, 1),
-      Color.fromRGBO(116, 212, 43, 1),
-      Color.fromARGB(255, 135, 245, 50),
-    ],
-  );
-  final LinearGradient _lowGradient = const LinearGradient(
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-    colors: [
-      Color.fromARGB(255, 1, 42, 18),
-      Color.fromRGBO(1, 138, 58, 1),
-    ],
-  );
+  late LinearGradient _currentGradientLight;
 
   void mudarCor() {
     setState(() {
       if (_lightHigh) {
-        _gradientLight = _highGradient;
+        _currentGradientLight = widget.highGradient;
       } else {
-        _gradientLight = _lowGradient;
+        _currentGradientLight = widget.lowGradient;
       }
       _lightHigh = !_lightHigh;
     });
@@ -45,7 +34,7 @@ class _LedAnimatedWidgetState extends State<LedAnimatedWidget> {
   @override
   void initState() {
     _lightHigh = false;
-    _gradientLight = _highGradient;
+    _currentGradientLight = widget.highGradient;
 
     Timer.periodic(
       const Duration(seconds: 1),
@@ -67,7 +56,7 @@ class _LedAnimatedWidgetState extends State<LedAnimatedWidget> {
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
-            gradient: _gradientLight,
+            gradient: _currentGradientLight,
           ),
           duration: const Duration(seconds: 1),
         ),
