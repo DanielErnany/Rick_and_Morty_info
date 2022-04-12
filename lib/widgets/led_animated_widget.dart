@@ -20,6 +20,8 @@ class _LedAnimatedWidgetState extends State<LedAnimatedWidget> {
   late bool _lightHigh;
   late LinearGradient _currentGradientLight;
 
+  Timer? timer;
+
   void mudarCor() {
     setState(() {
       if (_lightHigh) {
@@ -36,12 +38,18 @@ class _LedAnimatedWidgetState extends State<LedAnimatedWidget> {
     _lightHigh = false;
     _currentGradientLight = widget.highGradient;
 
-    Timer.periodic(
+    timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
         mudarCor();
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
   }
 
   @override
