@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+import '../exceptions/http_exeption.dart';
 import '../models/caracter.dart';
 import 'package:http/http.dart' as http;
 
@@ -29,6 +30,13 @@ class CaractersProvider with ChangeNotifier {
       Uri.parse(urlRequest!),
     );
 
+    if (response.statusCode >= 400) {
+      _caracters.clear();
+      notifyListeners();
+
+      throw const HttpException('Error loading characters');
+    }
+
     Map<String, dynamic> data = json.decode(response.body);
     Map<String, dynamic> pageInfo = data['info'];
 
@@ -44,6 +52,7 @@ class CaractersProvider with ChangeNotifier {
       );
     });
     notifyListeners();
+    return Future.value();
   }
 
   List<Caracter> get caracters => [..._caracters];

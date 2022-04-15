@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../models/caracter.dart';
 import '../providers/caracters_provider.dart';
 import 'acid_circular_progress_indicator_widget.dart';
 import 'caracter_item_gridview_widget.dart';
@@ -15,9 +16,12 @@ class CaractersGridviewWidget extends StatefulWidget {
 }
 
 class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
+  List<Caracter> _caracters = [];
+
   final RefreshController _refreshController = RefreshController();
 
-  bool _initialLoad = true;
+  bool _isLoad = true;
+  bool _isErrorLoad = false;
 
   @override
   void initState() {
@@ -25,15 +29,30 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
     _refreshData();
   }
 
-  void _refreshData() {
+  void _refreshData() async {
+    setState(() {
+      _isErrorLoad = false;
+    });
     final caractersProvider =
         Provider.of<CaractersProvider>(context, listen: false);
-    caractersProvider.loadCaracters(isRefresh: true).then((_) {
+
+    try {
+      await caractersProvider.loadCaracters(isRefresh: true).then((_) {
+        setState(() {
+          _isLoad = false;
+        });
+        _refreshController.refreshCompleted();
+      });
+    } catch (e) {
       setState(() {
-        _initialLoad = false;
+        _isErrorLoad = true;
+      });
+    } finally {
+      setState(() {
+        _isLoad = false;
       });
       _refreshController.refreshCompleted();
-    });
+    }
   }
 
   void _nextPageData() {
@@ -46,7 +65,7 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final caracters =
+    _caracters =
         Provider.of<CaractersProvider>(context, listen: true).caracters;
 
     return Container(
@@ -67,27 +86,46 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
         onRefresh: _refreshData,
         onLoading: _nextPageData,
         enablePullUp: true,
-        child: _initialLoad
+        child: _isLoad
             ? const Center(
                 child: AcidCircularProgressIndicatorWidget(),
               )
-            : GridView.builder(
-                itemCount: caracters.length,
-                padding: const EdgeInsets.all(10),
-                itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-                  value: caracters[i],
-                  child: CaracterItemGridViewWidget(
-                    key: ValueKey(caracters[i].id),
-                    caracter: caracters[i],
+            : _isErrorLoad && _caracters.isEmpty
+                ? Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: const [
+                          Text(
+                            "💀",
+                            style: TextStyle(fontSize: 60),
+                          ),
+                          Text(
+                            "There was an error loading characters, drag down to try loading again !",
+                            style: TextStyle(fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                : GridView.builder(
+                    itemCount: _caracters.length,
+                    padding: const EdgeInsets.all(10),
+                    itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+                      value: _caracters[i],
+                      child: CaracterItemGridViewWidget(
+                        key: ValueKey(_caracters[i].id),
+                        caracter: _caracters[i],
+                      ),
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1 / 1.42,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
                   ),
-                ),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1 / 1.42,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-              ),
       ),
     );
   }

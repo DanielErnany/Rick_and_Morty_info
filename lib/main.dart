@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
 
             if (mode == LoadStatus.loading) {
               body = const CircularProgressIndicator();
-            } else {
+            }
+            if  (mode == LoadStatus.noMore ) {
               body = const Text("No more caracteres");
             }
 
