@@ -3,9 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rick_and_morty_info/providers/caracters_provider.dart';
 import 'package:rick_and_morty_info/theme/app_theme.dart';
-import 'package:rick_and_morty_info/widgets/caracters_gridview_widget.dart';
 
-import 'widgets/app_bar_widget.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,26 +36,11 @@ class MyApp extends StatelessWidget {
           title: 'Rick and Morty info',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
-          home: const MyHomePage(),
+          home: const HomeScreen(),
         ),
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(),
-      body: const CaractersGridviewWidget(),
-    );
-  }
-}
