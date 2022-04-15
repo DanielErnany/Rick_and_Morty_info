@@ -55,12 +55,17 @@ class _CaractersGridviewWidgetState extends State<CaractersGridviewWidget> {
     }
   }
 
-  void _nextPageData() {
+  void _nextPageData() async {
     final caractersProvider =
         Provider.of<CaractersProvider>(context, listen: false);
-    caractersProvider.loadCaracters().then((e) {
-      if (e == null) _refreshController.loadComplete();
-    });
+
+    try {
+      await caractersProvider.loadCaracters().then((e) {
+        if (e == null) _refreshController.loadComplete();
+      });
+    } on Exception catch (e) {
+      _refreshController.loadFailed();
+    }
   }
 
   @override

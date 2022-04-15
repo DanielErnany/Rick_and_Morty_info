@@ -25,9 +25,10 @@ class MyApp extends StatelessWidget {
 
             if (mode == LoadStatus.loading) {
               body = const CircularProgressIndicator();
-            }
-            if  (mode == LoadStatus.noMore ) {
-              body = const Text("No more caracteres");
+            } else if (mode == LoadStatus.failed) {
+              body = const Text(
+                "Failed to load more ! Drag up to try again !",
+              );
             }
 
             return Center(child: body);
@@ -43,5 +44,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
