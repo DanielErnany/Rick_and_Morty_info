@@ -91,6 +91,13 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                         child: CachedNetworkImage(
                           imageUrl: widget.caracter.image,
                           fit: BoxFit.fill,
+                          errorWidget: (context, url, error) => Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(Icons.error),
+                              Text("error loading"),
+                            ],
+                          ),
                           progressIndicatorBuilder: (_, url, download) =>
                               const Center(
                             child: CircularProgressIndicator(),
