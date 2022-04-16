@@ -108,12 +108,10 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                   ),
                 ),
                 Center(
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text(
-                      caracter.name,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
+                  child: Text(
+                    caracter.name,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 SizedBox(

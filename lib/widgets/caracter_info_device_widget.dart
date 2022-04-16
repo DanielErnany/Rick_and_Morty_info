@@ -106,12 +106,10 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                         ),
                       ),
                       Center(
-                        child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: Text(
-                            widget.caracter.name,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
+                        child: Text(
+                          widget.caracter.name,
+                          style: Theme.of(context).textTheme.headline6,
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(
