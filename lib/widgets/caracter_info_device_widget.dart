@@ -98,9 +98,10 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                               Text("error loading"),
                             ],
                           ),
-                          progressIndicatorBuilder: (_, url, download) =>
-                              const Center(
-                            child: CircularProgressIndicator(),
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: CircularProgressIndicator(
+                                value: downloadProgress.progress),
                           ),
                         ),
                       ),

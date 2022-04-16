@@ -100,9 +100,10 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                     ),
                     imageUrl: caracter.image,
                     fit: BoxFit.cover,
-                    progressIndicatorBuilder: (_, url, download) =>
-                        const Center(
-                      child: CircularProgressIndicator(),
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Center(
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress),
                     ),
                   ),
                 ),
