@@ -118,9 +118,9 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                   height: dimensionsDevice.height * 0.005,
                 ),
                 Text("Status: ${caracter.status}"),
-                FittedBox(
-                  fit: BoxFit.fill,
-                  child: Text("Species: ${caracter.species}"),
+                Text(
+                  "Species: ${caracter.species}",
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text("Gender: ${caracter.gender}"),
               ],
