@@ -12,10 +12,17 @@ class CaracterItemGridViewWidget extends StatelessWidget {
   }) : super(key: key);
 
   void _showCaracterInfoDevice(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => CaracterInfoDeviceWidget(
-        caracter: caracter,
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        opaque: false,
+        barrierColor: Colors.black.withOpacity(0.5),
+        barrierDismissible: true,
+        pageBuilder: (context, _, __) {
+          return CaracterInfoDeviceWidget(
+            caracter: caracter,
+          );
+        },
       ),
     );
   }
@@ -90,20 +97,43 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                   ),
                   height: dimensionsDevice.height * 0.15,
                   width: double.infinity,
-                  child: CachedNetworkImage(
-                    errorWidget: (context, url, error) => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.error),
-                        Text("error loading"),
-                      ],
-                    ),
-                    imageUrl: caracter.image,
-                    fit: BoxFit.cover,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) => Center(
-                      child: CircularProgressIndicator(
-                          value: downloadProgress.progress),
+                  child: Hero(
+                    tag: caracter.id,
+                    placeholderBuilder: (_, size, widget) {
+                      return CachedNetworkImage(
+                        errorWidget: (context, url, error) => Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(Icons.error),
+                            Text("error loading"),
+                          ],
+                        ),
+                        imageUrl: caracter.image,
+                        fit: BoxFit.cover,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                            value: downloadProgress.progress,
+                          ),
+                        ),
+                      );
+                    },
+                    child: CachedNetworkImage(
+                      errorWidget: (context, url, error) => Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.error),
+                          Text("error loading"),
+                        ],
+                      ),
+                      imageUrl: caracter.image,
+                      fit: BoxFit.fill,
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                        ),
+                      ),
                     ),
                   ),
                 ),

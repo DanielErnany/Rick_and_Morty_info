@@ -67,6 +67,8 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                                 fit: BoxFit.fill,
                                 child: Text(
                                   '#${widget.caracter.id}',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                               ),
                             ),
@@ -88,20 +90,23 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                         ),
                         height: dimensionsDevice.height * 0.2,
                         width: double.infinity,
-                        child: CachedNetworkImage(
-                          imageUrl: widget.caracter.image,
-                          fit: BoxFit.fill,
-                          errorWidget: (context, url, error) => Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.error),
-                              Text("error loading"),
-                            ],
-                          ),
-                          progressIndicatorBuilder:
-                              (context, url, downloadProgress) => Center(
-                            child: CircularProgressIndicator(
-                                value: downloadProgress.progress),
+                        child: Hero(
+                          tag: widget.caracter.id,
+                          child: CachedNetworkImage(
+                            imageUrl: widget.caracter.image,
+                            fit: BoxFit.fill,
+                            errorWidget: (context, url, error) => Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(Icons.error),
+                                Text("error loading"),
+                              ],
+                            ),
+                            progressIndicatorBuilder:
+                                (context, url, downloadProgress) => Center(
+                              child: CircularProgressIndicator(
+                                  value: downloadProgress.progress),
+                            ),
                           ),
                         ),
                       ),
