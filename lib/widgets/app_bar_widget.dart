@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../utils/images.dart';
 import 'acid_drop_widget.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -66,24 +67,18 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        padding: EdgeInsets.all(5),
-        child: const Text(
-          'Rick and Morty info',
-          style: TextStyle(
-            fontFamily: 'Quanco',
-            fontSize: 22,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.4),
+            borderRadius: BorderRadius.circular(10),
           ),
-        ),
-      ),
+          padding: EdgeInsets.all(5),
+          child: Image.asset(
+            Images.RICK_AND_MORTY_INFO_APP_NAME,
+            width: 245,
+          )
+  
+          ),
       flexibleSpace: appBarGradient,
     );
   }
 }
-
-
