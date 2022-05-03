@@ -1,16 +1,36 @@
-# rick_and_morty_info
+# Rick and Morty info :alien:
 
-A new Flutter project.
 
-## Getting Started
+# Sobre o projeto :book:
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Rick and Morty info é uma aplicação Flutter mobile, a aplicação foi feita para exercitar e aprimorar meus conhecimentos em Flutter sobre consumo de API e animações. O app tem como objetivo mostrar informações uteis sobre os personagens da serie Rick and Morty.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Layout mobile :iphone:
+|Splash Screen|Home Screen|Caracter info device|
+| -------- | -------- |-------- |
+|![Splash Screen](https://raw.githubusercontent.com/DanielErnany/assets/main/rick_and_morty_info/splashScreen.png)|![Home Screen](https://raw.githubusercontent.com/DanielErnany/assets/main/rick_and_morty_info/homeSceen.png)|![Caracter info device](https://raw.githubusercontent.com/DanielErnany/assets/main/rick_and_morty_info/caracterInfoDevice.png)|
+ 
+
+
+
+
+## Packages usados na aplicação:file_folder::
+*  pull_to_refresh: ^2.0.0
+*  http: ^0.13.4
+*  provider: ^5.0.0
+*  cached_network_image: ^3.2.0
+
+<p> Dependecias de desenvolvimento:</p>
+
+*  flutter_launcher_icons: ^0.9.2
+*  flutter_native_splash: ^2.1.6
+
+# Autor :
+
+
+ ## <a href="https://github.com/DanielErnany">Daniel Ernany</a>
+
+
+
