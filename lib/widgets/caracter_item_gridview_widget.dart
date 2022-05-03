@@ -121,9 +121,12 @@ class CaracterItemGridViewWidget extends StatelessWidget {
                     child: CachedNetworkImage(
                       errorWidget: (context, url, error) => Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(Icons.error),
-                          Text("error loading"),
+                          Text(
+                            "error loading",
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
                         ],
                       ),
                       imageUrl: caracter.image,

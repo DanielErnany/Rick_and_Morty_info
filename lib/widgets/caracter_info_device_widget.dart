@@ -1,12 +1,8 @@
-import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_info/models/caracter.dart';
 import 'package:rick_and_morty_info/widgets/led_animated_widget.dart';
-
-import 'acid_drop_widget.dart';
-
 class CaracterInfoDeviceWidget extends StatefulWidget {
   final Caracter caracter;
   const CaracterInfoDeviceWidget({
@@ -95,11 +91,15 @@ class _CaracterInfoDeviceWidgetState extends State<CaracterInfoDeviceWidget> {
                           child: CachedNetworkImage(
                             imageUrl: widget.caracter.image,
                             fit: BoxFit.fill,
-                            errorWidget: (context, url, error) => Column(
+                            errorWidget: (_, url, error) => Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(Icons.error),
-                                Text("error loading"),
+                                Text(
+                                  "error loading",
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
                               ],
                             ),
                             progressIndicatorBuilder:
