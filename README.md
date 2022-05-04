@@ -5,7 +5,7 @@
 
 
 
-Rick and Morty info é uma aplicação Flutter mobile feita para exercitar e aprimorar meus conhecimentos em Flutter sobre consumo de API e animações através de uma série que sou fan. O app tem como objetivo mostrar informações uteis sobre os personagens da serie Rick and Morty.
+Rick and Morty info é uma aplicação Flutter mobile feita para exercitar e aprimorar meus conhecimentos em Flutter sobre consumo de API e animações através de uma série que sou fã. O app tem como objetivo mostrar informações uteis sobre os personagens da serie Rick and Morty.
 
 ## Layout mobile :iphone:
 |Splash Screen|Home Screen|Caracter info device|
