@@ -1,5 +1,6 @@
 # Rick and Morty info :alien:
 
+[Clique aqui para baixar o app na play store](https://play.google.com/store/apps/details?id=com.daniel_ernany.rick_and_morty_info)<br><br>
 
 # Sobre o projeto :book:
 
